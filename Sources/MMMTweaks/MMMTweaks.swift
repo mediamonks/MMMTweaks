@@ -11,7 +11,7 @@ extension MMMTweaks.BoolTweak {
 		path: @autoclosure () -> MMMTweaks.Path,
 		defaultValue: Bool
 	) {
-		#if TWEAKS_ENABLED
+		#if DEBUG || FB_TWEAK_ENABLED
 			self.init(__path: path(), defaultValue: defaultValue)
 		#else
 			self.init(__path: nil, defaultValue: defaultValue)
@@ -27,7 +27,7 @@ extension MMMTweaks.StringTweak {
 		path: @autoclosure () -> MMMTweaks.Path,
 		defaultValue: String
 	) {
-		#if TWEAKS_ENABLED
+		#if DEBUG || FB_TWEAK_ENABLED
 			self.init(__path: path(), defaultValue: defaultValue)
 		#else
 			self.init(__path: nil, defaultValue: defaultValue)
@@ -43,7 +43,7 @@ extension MMMTweaks.IntTweak {
 		path: @autoclosure () -> MMMTweaks.Path,
 		defaultValue: Int
 	) {
-		#if TWEAKS_ENABLED
+		#if DEBUG || FB_TWEAK_ENABLED
 			self.init(__path: path(), defaultValue: defaultValue)
 		#else
 			self.init(__path: nil, defaultValue: defaultValue)
@@ -59,7 +59,7 @@ extension MMMTweaks.DoubleTweak {
 		path: @autoclosure () -> MMMTweaks.Path,
 		defaultValue: Double
 	) {
-		#if TWEAKS_ENABLED
+		#if DEBUG || FB_TWEAK_ENABLED
 			self.init(__path: path(), defaultValue: defaultValue)
 		#else
 			self.init(__path: nil, defaultValue: defaultValue)
@@ -87,7 +87,7 @@ extension MMMTweaks.EnumTweak {
 		defaultValue: Any,
 		choices: @autoclosure () -> [MMMTweaks.EnumTweakChoice]
 	) {
-		#if TWEAKS_ENABLED
+		#if DEBUG || FB_TWEAK_ENABLED
 			self.init(__path: path(), defaultValue: defaultValue, choices: choices())
 		#else
 			self.init(__path: nil, defaultValue: defaultValue, choices: nil)
@@ -101,7 +101,7 @@ extension MMMTweaks.ActionTweak {
 		path: @autoclosure () -> MMMTweaks.Path,
 		block: @escaping () -> Void
 	) {
-		#if TWEAKS_ENABLED
+		#if DEBUG || FB_TWEAK_ENABLED
 			self.init(__path: path(), block: block)
 		#else
 			self.init(__path: nil, block: nil)
