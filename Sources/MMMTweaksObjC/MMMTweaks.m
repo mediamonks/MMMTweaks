@@ -81,7 +81,7 @@
 }
 
 - (NSString *)value {
-	return self.fbTweak.currentValue ? [self.fbTweak.currentValue stringValue] : _defaultValue;
+	return self.fbTweak.currentValue ?: _defaultValue;
 }
 
 - (id)initWithPath:(MMMTweakPath *)path defaultValue:(NSString *)defaultValue {
