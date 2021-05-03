@@ -27,6 +27,10 @@
 	return self;
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ > %@ > %@", _category, _subcategory, _name];
+}
+
 @end
 
 //
