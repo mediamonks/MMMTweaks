@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Tweaks",
+        "repositoryURL": "https://github.com/mediamonks/Tweaks",
+        "state": {
+          "branch": null,
+          "revision": "771f0be83e6ae1fa008e6ef06e2bff200444d8dd",
+          "version": "2.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

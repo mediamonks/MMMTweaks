@@ -3,6 +3,12 @@
 // Copyright (C) 2019 MediaMonks. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
+import MMMTweaksObjC
+
+@_exported import MMMTweaksObjC
+#endif
+
 extension MMMTweaks.BoolTweak {
 
 	/// Swift-specific initializer allows to use autoclosures to keep only the default value in Tweaks-free version
