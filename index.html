@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MMMTweaks  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="MMMTweaks  Reference"></a>
+
+    <header class="header">
+      <a href="https://media.monks.com">
+        <img src="img/logo.png" srcset="img/logo@2x.png 2x" alt="Media.Monks" class="header-logo" />
+      </a>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">MMMTweaks Reference</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      MMMTweaks  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMActionTweak.html">MMMActionTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMBoolTweak.html">MMMBoolTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMDoubleTweak.html">MMMDoubleTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMEnumTweak.html">MMMEnumTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMEnumTweakChoice.html">MMMEnumTweakChoice</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMLongTweak.html">MMMLongTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMStringTweak.html">MMMStringTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweak.html">MMMTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweakPath.html">MMMTweakPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweaks.html">MMMTweaks</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweaks/BoolTweak.html">– BoolTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweaks/StringTweak.html">– StringTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweaks/IntTweak.html">– IntTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweaks/DoubleTweak.html">– DoubleTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweaks/EnumTweak.html">– EnumTweak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MMMTweaks/ActionTweak.html">– ActionTweak</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='mmmtweaks' class='heading'>MMMTweaks</h1>
+
+<p><a href="https://github.com/mediamonks/MMMTweaks/actions?query=workflow%3ABuild"><img src="https://github.com/mediamonks/MMMTweaks/workflows/Build/badge.svg" alt="Build"></a></p>
+
+<p>Swift support for Facebook&rsquo;s Tweaks library.</p>
+
+<p>(This is a part of <code>MMMTemple</code> suite of iOS libraries we use at <a href="https://www.mediamonks.com/">MediaMonks</a>.)</p>
+<h2 id='quick-example' class='heading'>Quick example</h2>
+
+<p>We&rsquo;re trying to keep the spirit of super convenience Tweak&rsquo;s ObjC macros. </p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">MMMTweaks</span>
+
+<span class="c1">// On startup:</span>
+<span class="cp">#if DEBUG // Or any other condition when you want to have Tweaks enabled.</span>
+<span class="kt">MMMTweaks</span><span class="o">.</span><span class="nf">register</span><span class="p">()</span>
+<span class="cp">#endif</span>
+
+<span class="c1">// Anywhere in your code, but better closer to the use site:</span>
+<span class="kd">extension</span> <span class="kt">MMMTweaks</span> <span class="p">{</span>
+    <span class="kd">@objc</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">shouldMockCookies</span><span class="p">:</span> <span class="kt">BoolTweak</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">BoolTweak</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="s">"Test"</span><span class="p">,</span> <span class="s">"Mocks"</span><span class="p">,</span> <span class="s">"Mock cookies"</span><span class="p">),</span> <span class="n">defaultValue</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+    <span class="p">}()</span>
+<span class="p">}</span>
+
+<span class="c1">// Use site:</span>
+<span class="k">if</span> <span class="kt">MMMTweaks</span><span class="o">.</span><span class="n">shouldMockCookies</span><span class="o">.</span><span class="n">isOn</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Both the original Tweaks library and this Swift shim are by default enabled whenever <code>DEBUG</code> macro and <code>DEBUG</code> Swift active compilation conditions are correspondinly defined in their targets. </p>
+
+<p>To enable both libraries in configs where <code>DEBUG</code> is not defined you would need to define <code>FB_TWEAK_ENABLED</code> macro as <code>1</code> for Tweaks and add <code>FB_TWEAK_ENABLED</code> active compilation condition for MMMTweaks.</p>
+
+<p>For example, you can enable both libs for non-Debug configs of your choice via a postinstall script in your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
+    <span class="n">installer</span><span class="p">.</span><span class="nf">pods_project</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
+        <span class="n">target</span><span class="p">.</span><span class="nf">build_configurations</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s2">"MMMTweaks"</span> <span class="o">||</span> <span class="n">target</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s2">"Tweaks"</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s2">"&lt;YourSpecialConfig&gt;"</span><span class="p">)</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'GCC_PREPROCESSOR_DEFINITIONS'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[</span><span class="s1">'$(inherited)'</span><span class="p">]</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'GCC_PREPROCESSOR_DEFINITIONS'</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'FB_TWEAK_ENABLED=1'</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'SWIFT_ACTIVE_COMPILATION_CONDITIONS'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[</span><span class="s1">'$(inherited)'</span><span class="p">]</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'SWIFT_ACTIVE_COMPILATION_CONDITIONS'</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'FB_TWEAK_ENABLED'</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/mediamonks/MMMSpecs.git'</span>
+<span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+<span class="nf">pod</span> <span class="s1">'MMMTweaks'</span>
+</code></pre>
+
+<p>SPM:</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/mediamonks/MMMTweaks"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"2.2.0"</span><span class="p">))</span>
+</code></pre>
+<h2 id='ready-for-liftoff' class='heading'>Ready for liftoff? 🚀</h2>
+
+<p>We&rsquo;re always looking for talent. Join one of the fastest-growing rocket ships in
+the business. Head over to our <a href="https://media.monks.com/careers">careers page</a>
+for more info!</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2022 <a class="link" href="https://github.com/mediamonks/MMMTweaks" target="_blank" rel="external noopener">MediaMonks</a>. All rights reserved. (Last updated: 2022-04-26)</p>
+      <p></p>
+    </section>
+  </body>
+</html>
