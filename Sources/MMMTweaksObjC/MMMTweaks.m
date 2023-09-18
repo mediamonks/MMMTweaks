@@ -234,6 +234,9 @@
 			}
 		}
 	}
+	if (methods) {
+		free(methods);
+	}
 }
 
 + (void)registerTweak:(MMMTweak *)tweak methodName:(const char *)methodName {

@@ -6,7 +6,7 @@
 Pod::Spec.new do |s|
 
 	s.name = "MMMTweaks"
-	s.version = "2.2.0"
+	s.version = "2.2.1"
 	s.summary = "Swift support for Facebook's Tweaks library"
 	s.description = "#{s.summary}."
 	s.homepage = "https://github.com/mediamonks/#{s.name}"
